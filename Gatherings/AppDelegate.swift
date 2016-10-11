@@ -8,15 +8,29 @@
 
 import UIKit
 import CoreData
+import KYDrawerController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let mainViewController   = HomeVC()
+        let drawerViewController = SideMenuVC()
+        let drawerController     = KYDrawerController(drawerDirection: .left, drawerWidth: 250)
+        drawerController.mainViewController = UINavigationController(
+            rootViewController: mainViewController
+        )
+        
+        drawerController.drawerViewController = drawerViewController
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = drawerController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

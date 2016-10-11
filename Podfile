@@ -7,4 +7,6 @@ target 'Gatherings' do
 
   # Pods for Gatherings
   pod 'Firebase/Core'
+  pod 'KYDrawerController'
+
 end
